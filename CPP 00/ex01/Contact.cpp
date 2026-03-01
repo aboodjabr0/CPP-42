@@ -1,6 +1,5 @@
 #include "phonebook.hpp"
 
-
 void clsContact::SetFirstName(std::string FirstName)
 {
 	_FirstName = FirstName;

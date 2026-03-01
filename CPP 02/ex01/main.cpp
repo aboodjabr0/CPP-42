@@ -22,3 +22,19 @@ int main(void)
 	
 	return 0;
 }
+
+// #include <iostream>
+
+// int main()
+// {
+//     double a = 0.1;
+//     double b = 0.2;
+//     double c = 0.3;
+
+//     if (a + b == c)
+//         std::cout << "Equal\n";
+//     else
+//         std::cout << "Not Equal\n";
+
+//     std::cout << a + b << std::endl;
+// }

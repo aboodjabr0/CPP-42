@@ -15,8 +15,6 @@ private:
     std::string _DarkestSecret;
 
 public:
-    clsContact();
-    ~clsContact();
     void SetFirstName(std::string FirstName);
     void SetLastName(std::string LastName);
     void SetNickname(std::string Nickname);

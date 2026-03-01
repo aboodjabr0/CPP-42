@@ -7,7 +7,6 @@ int main( void )
 	Fixed b(a);
 	Fixed c;
 	
-	//c.copyFrom(b);
 	c = b;
 	std::cout << a.getRawBits() << std::endl;
 	std::cout << b.getRawBits() << std::endl;

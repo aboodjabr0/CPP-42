@@ -1,34 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asauafth <asauafth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/04 00:00:00 by asauafth          #+#    #+#             */
-/*   Updated: 2026/03/04 00:00:00 by asauafth         ###   ########.fr       */
+/*   Created: 2026/03/04 16:54:26 by asauafth          #+#    #+#             */
+/*   Updated: 2026/03/04 16:54:27 by asauafth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-# define CAT_HPP
+#ifndef PHONEBOOK_H
+#define PHONEBOOK_H
 
-# include "Animal.hpp"
-# include "Brain.hpp"
+#include <iostream>
+#include <string>
+#include <iomanip>
+#include <cstdlib>
+#include "Contact.hpp"
 
-class Cat : public Animal
+class PhoneBook
 {
-	private:
-		Brain *brain;
+private:
+    Contact _contacts[8];
+    int _ContactCount;
+    int _OldestIndex;
 
-	public:
-		Cat();
-		Cat(const Cat &src);
-		Cat &operator=(const Cat &rhs);
-		~Cat();
+    std::string truncate_string(std::string str);
 
-		void	makeSound() const;
-		Brain	*getBrain() const;
+public:
+    PhoneBook();
+    ~PhoneBook();
+
+    void Add_Contact();
+    void serach_contacts();
+    void print_menu();
 };
 
 #endif

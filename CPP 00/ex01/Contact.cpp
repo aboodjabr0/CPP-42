@@ -1,58 +1,68 @@
-#include "phonebook.hpp"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Contact.cpp                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: asauafth <asauafth@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/04 16:53:57 by asauafth          #+#    #+#             */
+/*   Updated: 2026/03/04 16:53:58 by asauafth         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void clsContact::SetFirstName(std::string FirstName)
+#include "PhoneBook.hpp"
+
+void Contact::SetFirstName(std::string FirstName)
 {
 	_FirstName = FirstName;
 }
 
-void clsContact::SetLastName(std::string LastName)
+void Contact::SetLastName(std::string LastName)
 {
 	_Last_Name = LastName;
 }
 
-void clsContact::SetNickname(std::string Nickname)
+void Contact::SetNickname(std::string Nickname)
 {
 	_Nickname = Nickname;
 }
 
-void clsContact::SetPhoneNumber(std::string PhoneNumber)
+void Contact::SetPhoneNumber(std::string PhoneNumber)
 {
 	_PhoneNumber = PhoneNumber;
 }
 
-void clsContact::SetDarkestSecret(std::string Secret)
+void Contact::SetDarkestSecret(std::string Secret)
 {
 	_DarkestSecret = Secret;
 }
 
-// Getters
-std::string clsContact::GetFirstName()
+std::string Contact::GetFirstName()
 {
 	return _FirstName;
 }
 
-std::string clsContact::GetLastName()
+std::string Contact::GetLastName()
 {
 	return _Last_Name;
 }
 
-std::string clsContact::GetNickname()
+std::string Contact::GetNickname()
 {
 	return _Nickname;
 }
 
-std::string clsContact::GetPhoneNumber()
+std::string Contact::GetPhoneNumber()
 {
 	return _PhoneNumber;
 }
 
-std::string clsContact::GetDarkestSecret()
+std::string Contact::GetDarkestSecret()
 {
 	return _DarkestSecret;
 }
 
-// Methods
-void clsContact::print_info()
+void Contact::print_info()
 {
 	std::cout << "\nContact Information:\n";
 	std::cout << "___________________________________\n";

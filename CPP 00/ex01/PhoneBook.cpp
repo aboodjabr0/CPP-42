@@ -1,16 +1,54 @@
-#include "phonebook.hpp"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: asauafth <asauafth@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/04 16:54:22 by asauafth          #+#    #+#             */
+/*   Updated: 2026/03/04 17:19:25 by asauafth         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-clsPhoneBook::clsPhoneBook()
+#include "PhoneBook.hpp"
+
+static bool ft_isdigit(const std::string &s)
+{
+	for (size_t i = 0; i < s.length(); i++)
+		if (!isdigit(s[i]))
+			return false;
+	return true;
+}
+
+static bool ft_isalpha(const std::string &s)
+{
+	for (size_t i = 0; i < s.length(); i++)
+		if (!isalpha(s[i]) && s[i] != ' ')
+			return false;
+	return true;
+}
+
+static bool ft_isspace(const std::string &s)
+{
+	for (size_t i = 0; i < s.length(); i++)
+	{
+		if (!isspace(s[i]))
+			return (false);
+	}
+	return (true);
+}
+
+PhoneBook::PhoneBook()
 {
 	_ContactCount = 0;
 	_OldestIndex = 0;
 }
 
-clsPhoneBook::~clsPhoneBook()
+PhoneBook::~PhoneBook()
 {
 }
 
-std::string clsPhoneBook::truncate_string(std::string str)
+std::string PhoneBook::truncate_string(std::string str)
 {
 	if (str.length() > 10)
 	{
@@ -20,7 +58,7 @@ std::string clsPhoneBook::truncate_string(std::string str)
 	return (str);
 }
 
-void clsPhoneBook::Add_Contact()
+void PhoneBook::Add_Contact()
 {
 	std::string input;
 
@@ -28,45 +66,85 @@ void clsPhoneBook::Add_Contact()
 
 	std::cout << "Enter First Name: ";
 	std::getline(std::cin, input);
-	if (input.empty())
+	if (std::cin.eof())
 	{
-		std::cout << "Error: First Name cannot be empty.";
+		std::cout << "\nEOF detected. Exiting...\n";
+		exit(0);
+	}
+	if (input.empty() || ft_isspace(input))
+	{
+		std::cout << "Error: First Name cannot be empty.\n";
+		return;
+	}
+	if (!ft_isalpha(input))
+	{
+		std::cout << "Error: First Name can only contain alphabetic characters.\n";
 		return;
 	}
 	_contacts[_OldestIndex].SetFirstName(input);
 
 	std::cout << "Enter Last Name: ";
 	std::getline(std::cin, input);
-	if (input.empty())
+	if (std::cin.eof())
 	{
-		std::cout << "Error: Last Name cannot be empty.";
+		std::cout << "\nEOF detected. Exiting...\n";
+		exit(0);
+	}
+	if (input.empty() || ft_isspace(input))
+	{
+		std::cout << "Error: Last Name cannot be empty.\n";
+		return;
+	}
+	if (!ft_isalpha(input))
+	{
+		std::cout << "Error: Last Name can only contain alphabetic characters.\n";
 		return;
 	}
 	_contacts[_OldestIndex].SetLastName(input);
 
 	std::cout << "Enter Nickname: ";
 	std::getline(std::cin, input);
-	if (input.empty())
+	if (std::cin.eof())
 	{
-		std::cout << "Error: Nickname cannot be empty.";
+		std::cout << "\nEOF detected. Exiting...\n";
+		exit(0);
+	}
+	if (input.empty() || ft_isspace(input))
+	{
+		std::cout << "Error: Nickname cannot be empty.\n";
 		return;
 	}
 	_contacts[_OldestIndex].SetNickname(input);
 
 	std::cout << "Enter Phone Number: ";
 	std::getline(std::cin, input);
-	if (input.empty())
+	if (std::cin.eof())
 	{
-		std::cout << "Error: Phone Number cannot be empty.";
+		std::cout << "\nEOF detected. Exiting...\n";
+		exit(0);
+	}
+	if (input.empty() || ft_isspace(input))
+	{
+		std::cout << "Error: Phone Number cannot be empty.\n";
+		return;
+	}
+	if (!ft_isdigit(input))
+	{
+		std::cout << "Error: Phone Number can only contain digits.\n";
 		return;
 	}
 	_contacts[_OldestIndex].SetPhoneNumber(input);
 
 	std::cout << "Enter Darkest Secret: ";
 	std::getline(std::cin, input);
-	if (input.empty())
+	if (std::cin.eof())
 	{
-		std::cout << "Error: Darkest Secret cannot be empty.";
+		std::cout << "\nEOF detected. Exiting...\n";
+		exit(0);
+	}
+	if (input.empty() || ft_isspace(input))
+	{
+		std::cout << "Error: Darkest Secret cannot be empty.\n";
 		return;
 	}
 	_contacts[_OldestIndex].SetDarkestSecret(input);
@@ -77,7 +155,7 @@ void clsPhoneBook::Add_Contact()
 		_ContactCount++;
 }
 
-void clsPhoneBook::serach_contacts()
+void PhoneBook::serach_contacts()
 {
 	if (_ContactCount == 0)
 	{
@@ -103,6 +181,11 @@ void clsPhoneBook::serach_contacts()
 	std::cout << "Enter the index of the contact to view details: ";
 	std::string input;
 	std::getline(std::cin, input);
+	if (std::cin.eof())
+	{
+		std::cout << "\nEOF detected. Exiting...\n";
+		exit(0);
+	}
 	
 	int index = 0;
 	bool valid = true;
@@ -127,7 +210,7 @@ void clsPhoneBook::serach_contacts()
 	_contacts[index - 1].print_info();
 }
 
-void clsPhoneBook::print_menu()
+void PhoneBook::print_menu()
 {
 	std::cout << "\n=================================\n";
 	std::cout << "     AWESOME PHONEBOOK 80s\n";

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asauafth <asauafth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,37 +10,42 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "PhoneBook.hpp"
+#include "Contact.hpp"
 
-Animal::Animal() : type("")
+int main()
 {
-	std::cout << "Animal default constructor called" << std::endl;
-}
+	PhoneBook phonebook;
+	std::string command;
 
-Animal::Animal(const Animal &src) : type(src.type)
-{
-	std::cout << "Animal copy constructor called" << std::endl;
-}
-
-Animal &Animal::operator=(const Animal &rhs)
-{
-	std::cout << "Animal copy assignment operator called" << std::endl;
-	if (this != &rhs)
-		this->type = rhs.type;
-	return *this;
-}
-
-Animal::~Animal()
-{
-	std::cout << "Animal destructor called" << std::endl;
-}
-
-void Animal::makeSound() const
-{
-	std::cout << "* ... (generic animal sound) *" << std::endl;
-}
-
-std::string Animal::getType() const
-{
-	return this->type;
+	phonebook.print_menu();
+	while (true)
+	{
+		std::cout << "\nEnter command: ";
+		std::getline(std::cin, command);
+		if (std::cin.eof())
+		{
+			std::cout << "\nGoodbye! All contacts will be lost forever...\n";
+			break;
+		}
+		if (command == "ADD")
+		{
+			phonebook.Add_Contact();
+		}
+		else if (command == "SEARCH")
+		{
+			phonebook.serach_contacts();
+		}
+		else if (command == "EXIT")
+		{
+			std::cout << "\nGoodbye! All contacts will be lost forever...\n";
+			break;
+		}
+		else
+		{
+			if (!command.empty())
+				std::cout << "Invalid command! Use ADD, SEARCH, or EXIT.\n";
+		}
+	}
+	return (0);
 }

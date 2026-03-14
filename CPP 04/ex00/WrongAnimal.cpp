@@ -6,20 +6,22 @@
 /*   By: asauafth <asauafth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 00:00:00 by asauafth          #+#    #+#             */
-/*   Updated: 2026/03/04 00:00:00 by asauafth         ###   ########.fr       */
+/*   Updated: 2026/03/14 18:12:28 by asauafth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "WrongAnimal.hpp"
 
-WrongAnimal::WrongAnimal() : type("")
+WrongAnimal::WrongAnimal()
 {
 	std::cout << "WrongAnimal default constructor called" << std::endl;
+	type = "WrongAnimal";
 }
 
-WrongAnimal::WrongAnimal(const WrongAnimal &src) : type(src.type)
+WrongAnimal::WrongAnimal(const WrongAnimal &src)
 {
 	std::cout << "WrongAnimal copy constructor called" << std::endl;
+	*this = src;
 }
 
 WrongAnimal &WrongAnimal::operator=(const WrongAnimal &rhs)

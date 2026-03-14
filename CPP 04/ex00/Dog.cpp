@@ -6,21 +6,22 @@
 /*   By: asauafth <asauafth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 00:00:00 by asauafth          #+#    #+#             */
-/*   Updated: 2026/03/04 00:00:00 by asauafth         ###   ########.fr       */
+/*   Updated: 2026/03/14 18:17:23 by asauafth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 
-Dog::Dog() : Animal()
+Dog::Dog()
 {
 	this->type = "Dog";
 	std::cout << "Dog default constructor called" << std::endl;
 }
 
-Dog::Dog(const Dog &src) : Animal(src)
+Dog::Dog(const Dog &src) : Animal()
 {
 	std::cout << "Dog copy constructor called" << std::endl;
+	*this = src;
 }
 
 Dog &Dog::operator=(const Dog &rhs)

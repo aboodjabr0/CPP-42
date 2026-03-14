@@ -6,20 +6,22 @@
 /*   By: asauafth <asauafth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 00:00:00 by asauafth          #+#    #+#             */
-/*   Updated: 2026/03/04 00:00:00 by asauafth         ###   ########.fr       */
+/*   Updated: 2026/03/13 18:25:12 by asauafth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
 
-Animal::Animal() : type("")
+Animal::Animal()
 {
 	std::cout << "Animal default constructor called" << std::endl;
+	type = "Animal";
 }
 
-Animal::Animal(const Animal &src) : type(src.type)
+Animal::Animal(const Animal &src)
 {
 	std::cout << "Animal copy constructor called" << std::endl;
+	*this = src;
 }
 
 Animal &Animal::operator=(const Animal &rhs)

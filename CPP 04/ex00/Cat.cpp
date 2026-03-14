@@ -6,21 +6,22 @@
 /*   By: asauafth <asauafth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 00:00:00 by asauafth          #+#    #+#             */
-/*   Updated: 2026/03/04 00:00:00 by asauafth         ###   ########.fr       */
+/*   Updated: 2026/03/14 18:17:23 by asauafth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 
-Cat::Cat() : Animal()
+Cat::Cat()
 {
 	this->type = "Cat";
 	std::cout << "Cat default constructor called" << std::endl;
 }
 
-Cat::Cat(const Cat &src) : Animal(src)
+Cat::Cat(const Cat &src) : Animal()
 {
 	std::cout << "Cat copy constructor called" << std::endl;
+	*this = src;
 }
 
 Cat &Cat::operator=(const Cat &rhs)
